@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/carrentappgp/static/css/main.678eb75e.css",
+    "main.js": "/carrentappgp/static/js/main.4e89ccf7.js",
+    "index.html": "/carrentappgp/index.html",
+    "main.678eb75e.css.map": "/carrentappgp/static/css/main.678eb75e.css.map",
+    "main.4e89ccf7.js.map": "/carrentappgp/static/js/main.4e89ccf7.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.678eb75e.css",
+    "static/js/main.4e89ccf7.js"
+  ]
+}
