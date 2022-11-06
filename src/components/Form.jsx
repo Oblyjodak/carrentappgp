@@ -21,7 +21,7 @@ function Form() {
       <div>
         <h1>Car rent calculator</h1>
       </div>
-      <br />
+
       <form onSubmit={handleSubmit(handleForm)}>
         <div className="formContainer">
           <label htmlFor="estKm">

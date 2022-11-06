@@ -19,28 +19,36 @@ export const calculateRentPrice = (data) => {
   const carId = carInfo[carCategory].id;
 
   const oneDayPrice = 100;
-  const rentDays = parseInt(rentDateTo / 84000000 - rentDateFrom / 84000000);
+  const milisecondsInDays = 84000000;
+  const rentDays = parseInt(
+    rentDateTo / milisecondsInDays - rentDateFrom / milisecondsInDays
+  );
   const rentDaysPrice = parseInt(oneDayPrice * rentDays);
 
+  const standardMultiplier = 1.3;
+  const mediumMultiplier = 1.6;
+  const premiumMultiplier = 2;
   const carCategoryPricing = {
     Basic: rentDaysPrice,
-    Standard: rentDaysPrice * 1.3,
-    Medium: rentDaysPrice * 1.6,
-    Premium: rentDaysPrice * 2,
+    Standard: rentDaysPrice * standardMultiplier,
+    Medium: rentDaysPrice * mediumMultiplier,
+    Premium: rentDaysPrice * premiumMultiplier,
   };
   let carCategoryPrice = carCategoryPricing[carCategorySelected];
 
   const currentYear = new Date().getFullYear();
   const yearsDriverLicense = currentYear - acqiredDriverLicense;
+  const lowDLYearsCharge = 1.2;
   if (yearsDriverLicense < 5) {
-    carCategoryPrice *= 1.2;
+    carCategoryPrice *= lowDLYearsCharge;
   }
 
   if (yearsDriverLicense < 3 && carCategorySelected === "Premium") {
     premiumCatAlert();
   }
+  const lowCarAvailability = 1.15;
   if (carAvailability <= 3) {
-    Math.trunc((carCategoryPrice *= 1.15));
+    Math.trunc((carCategoryPrice *= lowCarAvailability));
   }
 
   const gasPricePerLiter = 6.71;
@@ -51,7 +59,8 @@ export const calculateRentPrice = (data) => {
   const bruttoPrice = Math.trunc(
     rentDaysPrice + carCategoryPrice + totalGasPrice
   );
-  const nettoPrice = Math.trunc(bruttoPrice * 1.23);
+  const vatValue = 1.23;
+  const nettoPrice = Math.trunc(bruttoPrice * vatValue);
 
   return [
     {
