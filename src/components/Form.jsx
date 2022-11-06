@@ -18,65 +18,71 @@ function Form() {
 
   return (
     <div className="container">
-      <div>
+      <div className="app-container">
         <h1>Car rent calculator</h1>
-      </div>
 
-      <form onSubmit={handleSubmit(handleForm)}>
-        <div className="formContainer">
-          <label htmlFor="estKm">
-            How much kilometers do you want to travel?
-          </label>
-          <br />
-          <input
-            {...register("estimatedKmToDrive", { required: true })}
-            type="number"
-            id="estKm"
-          />
-          <br />
-          <br />
-          <label htmlFor="acqirdDL">Year of acqiring driver license</label>
-          <br />
-          <input
-            {...register("acqiredDriverLicense", { minLength: 4 })}
-            type="number"
-            id="acqirdDL"
-          />
-          <br />
-          <br />
-          <label htmlFor="carSelector">Choose your car</label>
-          <br />
-          <select id="carSelector" {...register("carCategory")}>
-            {carInfo.map((car) => (
-              <option value={car.id} key={car.id}>
-                {car.name} ({car.Category})
-              </option>
-            ))}
-          </select>
-          <br />
-          <br />
-          <label>Choose rent date</label>
-          <br />{" "}
-          <input
-            type="date"
-            {...register("rentDateFrom", { required: true })}
-          />
-          <br />
-          <br />
-          <input type="date" {...register("rentDateTo", { required: true })} />
-          <br />
-          <br />
-          <br />
-          <input type="submit" value="Calculate" />
-        </div>
-      </form>
-      <div>
+        <form onSubmit={handleSubmit(handleForm)}>
+          <div className="form-container">
+            <label htmlFor="estKm" className="estKm">
+              How much kilometers do you want to travel?
+            </label>
+            <br />
+            <input
+              {...register("estimatedKmToDrive", { required: true })}
+              type="number"
+              id="estKm"
+            />
+            <br />
+            <br />
+            <label htmlFor="acqirdDL">Year of acqiring driver license</label>
+            <br />
+            <input
+              {...register("acqiredDriverLicense", { minLength: 4 })}
+              type="number"
+              id="acqirdDL"
+            />
+            <br />
+            <br />
+            <label htmlFor="carSelector">Choose your car</label>
+            <br />
+            <select id="carSelector" {...register("carCategory")}>
+              {carInfo.map((car) => (
+                <option value={car.id} key={car.id}>
+                  {car.name} ({car.Category})
+                </option>
+              ))}
+            </select>
+            <br />
+            <br />
+            <label>Choose rent date</label>
+            <br />
+            <div className="date-inputs">
+              <input
+                type="date"
+                {...register("rentDateFrom", { required: true })}
+              />
+              {" - "}
+              <input
+                type="date"
+                {...register("rentDateTo", { required: true })}
+              />
+            </div>
+            <br />
+            <br />
+            <input type="submit" value="Calculate" />
+          </div>
+        </form>
+      </div>
+      <div
+        className="result-container"
+        style={isSubmited ? { backgroundColor: "#0c0c0c" } : null}
+      >
         {isSubmited
           ? fullData.map((item) => (
               <>
-                <span key={item.id}>
+                <p key={item.id}>
                   {item.title} {item.value}pln
-                </span>
+                </p>
                 <br />
               </>
             ))
