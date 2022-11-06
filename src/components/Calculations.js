@@ -1,6 +1,15 @@
 import { carInfo } from "./carInfo";
 import Swal from "sweetalert2";
 
+const premiumCatAlert = () => {
+  Swal.fire({
+    title: "Błąd",
+    text: "Nasza wypożyczalnia nie pozwala na wypożyczenie pojazdu kategorii premium osobom posiadającym prawo jazdy któcej niż 3 lata! Możesz zobaczyć koszty wynajmu ale twój wniosek zostanie utomatycznie odrzucony.",
+    icon: "error",
+    confirmButtonText: "Okej",
+  });
+};
+
 export const calculateRentPrice = (data) => {
   const { estimatedKmToDrive, acqiredDriverLicense, carCategory } = data;
   const rentDateFrom = new Date(data.rentDateFrom).getTime();
@@ -26,15 +35,6 @@ export const calculateRentPrice = (data) => {
   if (yearsDriverLicense < 5) {
     carCategoryPrice *= 1.2;
   }
-
-  const premiumCatAlert = () => {
-    Swal.fire({
-      title: "Błąd",
-      text: "Nasza wypożyczalnia nie pozwala na wypożyczenie pojazdu kategorii premium osobom posiadającym prawo jazdy któcej niż 3 lata! Możesz zobaczyć koszty wynajmu ale twój wniosek zostanie utomatycznie odrzucony.",
-      icon: "error",
-      confirmButtonText: "Okej",
-    });
-  };
 
   if (yearsDriverLicense < 3 && carCategorySelected === "Premium") {
     premiumCatAlert();
