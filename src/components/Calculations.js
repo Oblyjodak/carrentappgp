@@ -1,4 +1,5 @@
 import { carInfo } from "./carInfo";
+import Swal from "sweetalert2";
 
 export const calculateRentPrice = (data) => {
   const { estimatedKmToDrive, acqiredDriverLicense, carCategory } = data;
@@ -25,10 +26,18 @@ export const calculateRentPrice = (data) => {
   if (yearsDriverLicense < 5) {
     carCategoryPrice *= 1.2;
   }
+
+  const premiumCatAlert = () => {
+    Swal.fire({
+      title: "Błąd",
+      text: "Nasza wypożyczalnia nie pozwala na wypożyczenie pojazdu kategorii premium osobom posiadającym prawo jazdy któcej niż 3 lata! Możesz zobaczyć koszty wynajmu ale twój wniosek zostanie utomatycznie odrzucony.",
+      icon: "error",
+      confirmButtonText: "Okej",
+    });
+  };
+
   if (yearsDriverLicense < 3 && carCategorySelected === "Premium") {
-    return alert(
-      "Nasza wypożyczalnia nie pozwala na wypożyczenie pojazdu kategorii premium osobom posiadającym prawo jazdy któcej niż 3 lata!"
-    );
+    premiumCatAlert();
   }
   if (carAvailability <= 3) {
     Math.trunc((carCategoryPrice *= 1.15));
@@ -45,10 +54,22 @@ export const calculateRentPrice = (data) => {
   const nettoPrice = Math.trunc(bruttoPrice * 1.23);
 
   return [
-    { name: "Price for all days ", value: Math.trunc(rentDaysPrice) },
-    { name: "Car category price ", value: Math.trunc(carCategoryPrice) },
-    { name: "Gas price ", value: Math.trunc(totalGasPrice) },
-    { name: "Netto price ", value: Math.trunc(nettoPrice) },
-    { name: "Total (brutto) price ", value: Math.trunc(bruttoPrice) },
+    {
+      id: "all_days_price",
+      title: "Price for all days ",
+      value: Math.trunc(rentDaysPrice),
+    },
+    {
+      id: "car_category_price",
+      title: "Car category price ",
+      value: Math.trunc(carCategoryPrice),
+    },
+    { id: "gas_price", title: "Gas price ", value: Math.trunc(totalGasPrice) },
+    { id: "netto_price", title: "Netto price ", value: Math.trunc(nettoPrice) },
+    {
+      id: "brutto_price",
+      title: "Total (brutto) price ",
+      value: Math.trunc(bruttoPrice),
+    },
   ];
 };

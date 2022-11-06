@@ -15,7 +15,7 @@ function Form() {
     setFullData(calculateRentPrice(data));
     setIsSubmited(true);
   };
-  console.log(fullData);
+
   return (
     <div className="container">
       <div>
@@ -74,8 +74,8 @@ function Form() {
         {isSubmited
           ? fullData.map((item) => (
               <>
-                <span key={item.name}>
-                  {item.name} {item.value}pln
+                <span key={item.id}>
+                  {item.title} {item.value}pln
                 </span>
                 <br />
               </>
