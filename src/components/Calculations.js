@@ -74,7 +74,11 @@ export const calculateRentPrice = (data) => {
       value: Math.trunc(carCategoryPrice),
     },
     { id: "gas_price", title: "Gas price ", value: Math.trunc(totalGasPrice) },
-    { id: "netto_price", title: "Netto price ", value: Math.trunc(nettoPrice) },
+    {
+      id: "netto_price",
+      title: "Netto price ",
+      value: Math.trunc(nettoPrice),
+    },
     {
       id: "brutto_price",
       title: "Total (brutto) price ",
