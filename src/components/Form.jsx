@@ -10,19 +10,19 @@ function Form() {
   const [fullData, setFullData] = useState([
     {
       id: "all_days_price",
-      title: "",
+      title: "Price for all days",
       value: "-",
     },
     {
       id: "car_category_price",
-      title: "",
+      title: "Car category price",
       value: "-",
     },
-    { id: "gas_price", title: "", value: "-" },
-    { id: "netto_price", title: "", value: "-" },
+    { id: "gas_price", title: "Gas price", value: "-" },
+    { id: "netto_price", title: "Netto price", value: "-" },
     {
       id: "brutto_price",
-      title: "",
+      title: "Total (brutto) price",
       value: "-",
     },
   ]);
