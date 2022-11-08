@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/carrentappgp/static/css/main.24fc2341.css",
-    "main.js": "/carrentappgp/static/js/main.85cfeea8.js",
+    "main.css": "/carrentappgp/static/css/main.9fb34791.css",
+    "main.js": "/carrentappgp/static/js/main.46c20119.js",
     "index.html": "/carrentappgp/index.html",
-    "main.24fc2341.css.map": "/carrentappgp/static/css/main.24fc2341.css.map",
-    "main.85cfeea8.js.map": "/carrentappgp/static/js/main.85cfeea8.js.map"
+    "main.9fb34791.css.map": "/carrentappgp/static/css/main.9fb34791.css.map",
+    "main.46c20119.js.map": "/carrentappgp/static/js/main.46c20119.js.map"
   },
   "entrypoints": [
-    "static/css/main.24fc2341.css",
-    "static/js/main.85cfeea8.js"
+    "static/css/main.9fb34791.css",
+    "static/js/main.46c20119.js"
   ]
 }
