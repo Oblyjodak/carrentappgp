@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+
 import { carInfo } from "./carInfo";
 import { calculateRentPrice } from "./Calculations";
+
+import { GiRoad } from "react-icons/gi";
+import { MdBadge } from "react-icons/md";
+import { FaCarSide } from "react-icons/fa";
 import "./Form.css";
 
 function Form() {
@@ -34,8 +39,11 @@ function Form() {
   return (
     <div className="container">
       <div className="app-container">
-        <h1>Car rent calculator</h1>
-        <h6 style={{ fontWeight: "100" }}>
+        <h1>
+          Car <span style={{ color: "rgb(36, 145, 255)" }}>rent</span>{" "}
+          calculator
+        </h1>
+        <h6 style={{ color: "rgb(36, 145, 255)" }}>
           <p>
             Calculator that helps you easly calculate the car rental costs based
             on,
@@ -56,55 +64,61 @@ function Form() {
                 Kilometers to travel
               </label>
               <br />
+              <div className="input-icons">
+                <GiRoad className="theicon" size={24} stroke-width={8} />
+                <input
+                  {...register("estimatedKmToDrive", { required: true })}
+                  type="number"
+                  id="estKm"
+                />
+              </div>
 
-              <input
-                {...register("estimatedKmToDrive", { required: true })}
-                type="number"
-                id="estKm"
-              />
-
-              <br />
               <br />
               <label htmlFor="acqirdDL">Year of driver license</label>
               <br />
-
-              <input
-                {...register("acqiredDriverLicense", { minLength: 4 })}
-                type="number"
-                id="acqirdDL"
-              />
-
-              <br />
+              <div className="input-icons">
+                <MdBadge className="theicon" size={24} />
+                <input
+                  {...register("acqiredDriverLicense", {
+                    minLength: 4,
+                    required: true,
+                  })}
+                  type="number"
+                  id="acqirdDL"
+                />
+              </div>
               <br />
 
               <label htmlFor="carSelector">Choose your car</label>
               <br />
-
-              <select id="carSelector" {...register("carCategory")}>
-                {carInfo.map((car) => (
-                  <option value={car.id} key={car.id}>
-                    {car.name} ({car.Category})
-                  </option>
-                ))}
-              </select>
-
-              <br />
+              <div className="input-icons">
+                <FaCarSide className="theicon" size={24} />
+                <select id="carSelector" {...register("carCategory")}>
+                  {carInfo.map((car) => (
+                    <option value={car.id} key={car.id}>
+                      {car.name} ({car.Category})
+                    </option>
+                  ))}
+                </select>
+              </div>
               <br />
               <label>Choose rent date</label>
               <br />
-              <div className="date-inputs">
-                <input
-                  type="date"
-                  {...register("rentDateFrom", { required: true })}
-                />
-                {" - "}
-                <input
-                  type="date"
-                  {...register("rentDateTo", { required: true })}
-                />
-              </div>
             </div>
-            <br />
+
+            <div className="date-inputs">
+              <input
+                type="date"
+                {...register("rentDateFrom", { required: true })}
+              />
+              {" - "}
+
+              <input
+                type="date"
+                {...register("rentDateTo", { required: true })}
+              />
+            </div>
+
             <br />
             <input type="submit" value="Calculate" />
           </div>
@@ -112,11 +126,17 @@ function Form() {
 
         <hr />
         <div className="result-container">
-          <div class="result-items">
+          <div className="result-items">
             {fullData.map((item) => (
               <>
-                <span key={item.id} style={{ margin: "15px" }}>
-                  {item.title} <p style={{ margin: "15px" }}>{item.value}</p>
+                <span
+                  key={item.id}
+                  style={{ margin: "15px", backgroundColor: "" }}
+                >
+                  {item.title}{" "}
+                  <p style={{ margin: "15px" }} key={item.id}>
+                    {item.value}
+                  </p>
                 </span>
               </>
             ))}

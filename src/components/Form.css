@@ -1,8 +1,8 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fjalla+One&family=Poppins:wght@500&display=swap");
 
 body {
   color: #515151;
-  font-family: "Roboto Slab", serif;
+  font-family: "Poppins", sans-serif;
 }
 
 .container {
@@ -12,7 +12,8 @@ body {
 }
 
 .app-container {
-  margin-top: 50px;
+  margin-top: 20px;
+  margin-bottom: 20px;
   background-color: #eeeeee;
   width: 1000px;
   border-radius: 20px;
@@ -30,7 +31,7 @@ body {
 .result-container {
   width: 1000px;
   height: 150px;
-  font-size: small;
+  font-size: xx-large;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -38,7 +39,7 @@ body {
 }
 
 .result-items {
-  border: 1px solid rgb(211, 211, 211);
+  border: 1px solid rgb(36, 145, 255);
   width: 80%;
   height: 100px;
   border-radius: 20px;
@@ -46,14 +47,14 @@ body {
   align-items: center;
   justify-content: center;
   margin-bottom: 10px;
-  font-size: 15px;
+  font-size: medium;
 }
 
 input {
   font-size: x-large;
   border-radius: 8px;
   border: none;
-  height: 30px;
+  height: 40px;
   width: 80%;
   text-align: center;
 }
@@ -62,6 +63,7 @@ select {
   font-size: x-large;
   border-radius: 8px;
   width: 80%;
+  height: 40px;
   text-align: center;
   border: none;
 }
@@ -71,16 +73,17 @@ input[type="submit"] {
   width: 25%;
   height: 50px;
   border-radius: 3px;
-  background-color: #8c8c8c;
-  margin-bottom: 30px;
+  background-color: rgb(36, 145, 255);
+  margin-bottom: 20px;
   color: white;
   transition: all 0.2s ease-in-out;
   transition-property: all;
   transition-duration: 0.2s;
+  border: none;
 }
 
 input[type="submit"]:hover {
-  background-color: #666666;
+  background-color: rgb(29, 113, 197);
   cursor: pointer;
 }
 
@@ -88,6 +91,7 @@ input[type="submit"]:hover {
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 40%;
 }
 
 label {
@@ -96,6 +100,7 @@ label {
 }
 
 h1 {
+  font-size: 55px;
   color: #515151;
 }
 
@@ -104,6 +109,14 @@ hr {
 }
 
 .inputs {
-  margin-top: 50px;
+  margin-top: 20px;
   width: 40%;
+  font-size: 20px;
+}
+
+.theicon {
+  color: rgb(36, 145, 255);
+  margin-top: 10px;
+  margin-left: 10px;
+  position: absolute;
 }

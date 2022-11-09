@@ -3,8 +3,26 @@ import Swal from "sweetalert2";
 
 const premiumCatAlert = () => {
   Swal.fire({
-    title: "Błąd",
-    text: "Nasza wypożyczalnia nie pozwala na wypożyczenie pojazdu kategorii premium osobom posiadającym prawo jazdy któcej niż 3 lata! Możesz zobaczyć koszty wynajmu ale twój wniosek zostanie utomatycznie odrzucony.",
+    title: "Error",
+    text: "Our rental service doesnt let drivers which have driver license under 3 years to rent Premium car. You can still see the costs but your application will automatically be rejected",
+    icon: "error",
+    confirmButtonText: "Okej",
+  });
+};
+
+const incorrentYear = () => {
+  Swal.fire({
+    title: "Error",
+    text: "Incorrect year of acqireing driver license.",
+    icon: "error",
+    confirmButtonText: "Okej",
+  });
+};
+
+const incorrentRentDate = () => {
+  Swal.fire({
+    title: "Error",
+    text: "Incorrect rent date.",
     icon: "error",
     confirmButtonText: "Okej",
   });
@@ -24,6 +42,10 @@ export const calculateRentPrice = (data) => {
     rentDateTo / milisecondsInDays - rentDateFrom / milisecondsInDays
   );
   const rentDaysPrice = parseInt(oneDayPrice * rentDays);
+
+  if (rentDays < 1) {
+    incorrentRentDate();
+  }
 
   const standardMultiplier = 1.3;
   const mediumMultiplier = 1.6;
@@ -45,6 +67,10 @@ export const calculateRentPrice = (data) => {
 
   if (yearsDriverLicense < 3 && carCategorySelected === "Premium") {
     premiumCatAlert();
+  }
+
+  if (acqiredDriverLicense < 1922 || acqiredDriverLicense > 2022) {
+    incorrentYear();
   }
   const lowCarAvailability = 1.15;
   if (carAvailability <= 3) {
